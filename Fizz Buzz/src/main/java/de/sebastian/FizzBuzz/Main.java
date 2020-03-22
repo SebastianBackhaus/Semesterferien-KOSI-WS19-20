@@ -1,44 +1,66 @@
-package de.sebastian.FizzBuzz;
+package de.sebastian.fizzbuzz;
+
+import java.util.LinkedList;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void  main(String[] args) {
 
-        for (int i = 1; i < 20; i++) {
+        System.out.println(FizzBuzznormal(1,20));
+
+        System.out.println("Rekursiv: ");
+
+        LinkedList<String>Listerekursiv= new LinkedList();
+
+        FizzBuzzRekursiv(1,Listerekursiv,20);
+        System.out.println(Listerekursiv);
+
+    }
+
+    public static  LinkedList FizzBuzznormal(int min,int max)  {
+
+        LinkedList  Liste1 =new LinkedList();
+
+        for (int i = min; i < max; i++) {
             if (i % 3 == 0 && i % 5 == 0) {
-                System.out.println("Fizz-Buzz");
+                Liste1.add("Fizz-Buzz");
             } else if (i % 3 == 0) {
-                System.out.println("Fizz");
+                Liste1.add("Fizz");
             } else if (i % 5 == 0) {
-                System.out.println("Buzz");
+                Liste1.add("Buzz");
             } else {
-                System.out.println(i);
+                Liste1.add(""+i);
             }
         }
 
-        System.out.println("Rekursiv: ");
-        FizzBuzz(20);
+        return Liste1;
 
     }
 
 
-    public static void FizzBuzz(int x) {
+
+    LinkedList Liste2 = new LinkedList();
+
+    public static void FizzBuzzRekursiv(int x, LinkedList<String> Liste2,int max) {
+
+
 
         int index = x;
 
-        if (index < 30) {
+        if (index < max) {
             if (index % 3 == 0 && index % 5 == 0) {
-                System.out.println("Fizz-Buzz");
+                Liste2.add("Fizz-Buzz");
             } else if (index % 3 == 0) {
-                System.out.println("Fizz");
-
+                Liste2.add("Fizz");
             } else if (index % 5 == 0) {
-                System.out.println("Buzz");
+               Liste2.add("Buzz");
             } else {
-                System.out.println(index);
+                Liste2.add(""+index);
             }
             index ++;
-            FizzBuzz (index);
+            FizzBuzzRekursiv (index,Liste2,max);
         }
+
     }
 }
 
